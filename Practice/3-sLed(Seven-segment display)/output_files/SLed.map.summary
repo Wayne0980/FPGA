@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Oct 29 11:02:45 2017
+Quartus Prime Version : 16.1.1 Build 200 11/30/2016 SJ Standard Edition
+Revision Name : SLed
+Top-level Entity Name : SLed
+Family : Cyclone IV E
+Total logic elements : 33
+    Total combinational functions : 33
+    Dedicated logic registers : 26
+Total registers : 26
+Total pins : 13
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

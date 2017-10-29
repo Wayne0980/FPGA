@@ -1,0 +1,22 @@
+module SLed(seg,dig,clk);
+
+input clk;
+output[7:0] seg;
+output[3:0] dig;
+
+reg [7:0] seg;
+reg [3:0] dig;
+reg [3:0] disp_dat;
+
+reg [36:0] count;
+
+always@(posedge clk)
+begin
+	count = count + 1'b1;
+	dig = 3'b0000;
+end
+
+
+
+
+endmodule
