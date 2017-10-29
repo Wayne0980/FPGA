@@ -6,3 +6,5 @@ Practice/2-And_Gate     And閘控制LED的練習範例(EP4CE6E22C8) </br>
 ![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/VIDEO0656.gif)</br>
 Practice/3-sLed         控制七段顯示器範例(EP4CE6E22C8) </br>
 ![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/VIDEO0657.gif)</br>
+Practice/4-uart         控制UART發送出接收到的字(EP4CE6E22C8) </br>
+![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/4-UART/20171029_152248.gif)</br>
