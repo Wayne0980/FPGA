@@ -1,0 +1,1262 @@
+TimeQuest Timing Analyzer report for vga
+Thu Nov 02 22:51:17 2017
+Quartus Prime Version 16.1.1 Build 200 11/30/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1200mV 85C Model Fmax Summary
+  6. Timing Closure Recommendations
+  7. Slow 1200mV 85C Model Setup Summary
+  8. Slow 1200mV 85C Model Hold Summary
+  9. Slow 1200mV 85C Model Recovery Summary
+ 10. Slow 1200mV 85C Model Removal Summary
+ 11. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1200mV 85C Model Setup: 'vga_clk'
+ 13. Slow 1200mV 85C Model Setup: 'clock'
+ 14. Slow 1200mV 85C Model Hold: 'clock'
+ 15. Slow 1200mV 85C Model Hold: 'vga_clk'
+ 16. Slow 1200mV 85C Model Metastability Summary
+ 17. Slow 1200mV 0C Model Fmax Summary
+ 18. Slow 1200mV 0C Model Setup Summary
+ 19. Slow 1200mV 0C Model Hold Summary
+ 20. Slow 1200mV 0C Model Recovery Summary
+ 21. Slow 1200mV 0C Model Removal Summary
+ 22. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 23. Slow 1200mV 0C Model Setup: 'vga_clk'
+ 24. Slow 1200mV 0C Model Setup: 'clock'
+ 25. Slow 1200mV 0C Model Hold: 'clock'
+ 26. Slow 1200mV 0C Model Hold: 'vga_clk'
+ 27. Slow 1200mV 0C Model Metastability Summary
+ 28. Fast 1200mV 0C Model Setup Summary
+ 29. Fast 1200mV 0C Model Hold Summary
+ 30. Fast 1200mV 0C Model Recovery Summary
+ 31. Fast 1200mV 0C Model Removal Summary
+ 32. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 33. Fast 1200mV 0C Model Setup: 'vga_clk'
+ 34. Fast 1200mV 0C Model Setup: 'clock'
+ 35. Fast 1200mV 0C Model Hold: 'vga_clk'
+ 36. Fast 1200mV 0C Model Hold: 'clock'
+ 37. Fast 1200mV 0C Model Metastability Summary
+ 38. Multicorner Timing Analysis Summary
+ 39. Board Trace Model Assignments
+ 40. Input Transition Times
+ 41. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 42. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 43. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 44. Setup Transfers
+ 45. Hold Transfers
+ 46. Report TCCS
+ 47. Report RSKM
+ 48. Unconstrained Paths Summary
+ 49. Clock Status Summary
+ 50. Unconstrained Output Ports
+ 51. Unconstrained Output Ports
+ 52. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2016  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                               ;
++-----------------------+---------------------------------------------------------+
+; Quartus Prime Version ; Version 16.1.1 Build 200 11/30/2016 SJ Standard Edition ;
+; Timing Analyzer       ; TimeQuest                                               ;
+; Revision Name         ; vga                                                     ;
+; Device Family         ; Cyclone IV E                                            ;
+; Device Name           ; EP4CE6E22C8                                             ;
+; Timing Models         ; Final                                                   ;
+; Delay Model           ; Combined                                                ;
+; Rise/Fall Delays      ; Enabled                                                 ;
++-----------------------+---------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.4%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                              ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets     ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------+
+; clock      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clock }   ;
+; vga_clk    ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { vga_clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------+
+
+
++--------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary               ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 309.41 MHz ; 309.41 MHz      ; vga_clk    ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-------------------------------------+
+; Slow 1200mV 85C Model Setup Summary ;
++---------+--------+------------------+
+; Clock   ; Slack  ; End Point TNS    ;
++---------+--------+------------------+
+; vga_clk ; -2.232 ; -31.709          ;
+; clock   ; -0.766 ; -0.766           ;
++---------+--------+------------------+
+
+
++------------------------------------+
+; Slow 1200mV 85C Model Hold Summary ;
++---------+-------+------------------+
+; Clock   ; Slack ; End Point TNS    ;
++---------+-------+------------------+
+; clock   ; 0.597 ; 0.000            ;
+; vga_clk ; 0.624 ; 0.000            ;
++---------+-------+------------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++---------+--------+--------------------------------+
+; Clock   ; Slack  ; End Point TNS                  ;
++---------+--------+--------------------------------+
+; clock   ; -3.000 ; -4.487                         ;
+; vga_clk ; -1.487 ; -29.740                        ;
++---------+--------+--------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'vga_clk'                                                               ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; -2.232 ; hcount[9] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.572     ; 2.661      ;
+; -2.232 ; hcount[9] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.572     ; 2.661      ;
+; -2.232 ; hcount[9] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.572     ; 2.661      ;
+; -2.167 ; hcount[6] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 3.088      ;
+; -2.167 ; hcount[6] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 3.088      ;
+; -2.167 ; hcount[6] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 3.088      ;
+; -2.057 ; hcount[2] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.978      ;
+; -2.057 ; hcount[2] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.978      ;
+; -2.057 ; hcount[2] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.978      ;
+; -2.042 ; hcount[3] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.963      ;
+; -2.042 ; hcount[3] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.963      ;
+; -2.042 ; hcount[3] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.963      ;
+; -2.013 ; vcount[0] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.439      ;
+; -2.004 ; vcount[6] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.430      ;
+; -1.959 ; vcount[2] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.385      ;
+; -1.953 ; vcount[0] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.854      ;
+; -1.931 ; hcount[0] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.852      ;
+; -1.931 ; hcount[0] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.852      ;
+; -1.931 ; hcount[0] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.852      ;
+; -1.910 ; hcount[8] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.831      ;
+; -1.910 ; hcount[8] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.831      ;
+; -1.910 ; hcount[8] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.831      ;
+; -1.909 ; hcount[1] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.830      ;
+; -1.881 ; vcount[0] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.307      ;
+; -1.871 ; vcount[7] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.297      ;
+; -1.832 ; hcount[9] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.572     ; 2.261      ;
+; -1.832 ; hcount[9] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.572     ; 2.261      ;
+; -1.816 ; hcount[0] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.737      ;
+; -1.805 ; vcount[2] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.706      ;
+; -1.771 ; hcount[3] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.692      ;
+; -1.762 ; hcount[1] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.683      ;
+; -1.762 ; hcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.683      ;
+; -1.762 ; hcount[1] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.683      ;
+; -1.757 ; hcount[6] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.678      ;
+; -1.757 ; hcount[6] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.678      ;
+; -1.745 ; vcount[2] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.171      ;
+; -1.744 ; vcount[8] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.665      ;
+; -1.723 ; vcount[9] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.149      ;
+; -1.720 ; hcount[9] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.720 ; hcount[9] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.720 ; hcount[9] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.720 ; hcount[9] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.720 ; hcount[9] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.720 ; hcount[9] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.720 ; hcount[9] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; -0.097     ; 2.624      ;
+; -1.699 ; vcount[5] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.125      ;
+; -1.680 ; hcount[2] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.601      ;
+; -1.674 ; hcount[2] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.595      ;
+; -1.669 ; vcount[4] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.570      ;
+; -1.661 ; hcount[5] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.582      ;
+; -1.661 ; hcount[5] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.582      ;
+; -1.661 ; hcount[5] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.582      ;
+; -1.659 ; hcount[3] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.580      ;
+; -1.655 ; hcount[6] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.655 ; hcount[6] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.655 ; hcount[6] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.655 ; hcount[6] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.655 ; hcount[6] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.655 ; hcount[6] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.655 ; hcount[6] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 3.051      ;
+; -1.649 ; hcount[0] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.570      ;
+; -1.624 ; hcount[5] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.545      ;
+; -1.619 ; hcount[0] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.392      ; 3.012      ;
+; -1.604 ; vcount[4] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.030      ;
+; -1.599 ; vcount[4] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 2.025      ;
+; -1.592 ; vcount[5] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.493      ;
+; -1.577 ; hcount[9] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.478      ;
+; -1.571 ; hcount[1] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.392      ; 2.964      ;
+; -1.567 ; hcount[1] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.488      ;
+; -1.552 ; vcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 1.978      ;
+; -1.549 ; hcount[7] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.470      ;
+; -1.549 ; hcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.470      ;
+; -1.549 ; hcount[7] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.470      ;
+; -1.542 ; hcount[2] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.542 ; hcount[2] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.542 ; hcount[2] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.542 ; hcount[2] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.542 ; hcount[2] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.542 ; hcount[2] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.542 ; hcount[2] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.938      ;
+; -1.535 ; vcount[0] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.436      ;
+; -1.532 ; vcount[6] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.433      ;
+; -1.529 ; vcount[6] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.430      ;
+; -1.529 ; vcount[6] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.100     ; 2.430      ;
+; -1.527 ; hcount[4] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.448      ;
+; -1.527 ; hcount[3] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.527 ; hcount[3] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.527 ; hcount[3] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.527 ; hcount[3] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.527 ; hcount[3] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.527 ; hcount[3] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.527 ; hcount[3] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.395      ; 2.923      ;
+; -1.509 ; hcount[6] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.392      ; 2.902      ;
+; -1.500 ; hcount[8] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.421      ;
+; -1.500 ; hcount[8] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.421      ;
+; -1.496 ; vcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.417      ;
+; -1.474 ; hcount[7] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.395      ;
+; -1.470 ; hcount[2] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.392      ; 2.863      ;
+; -1.463 ; vcount[6] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.575     ; 1.889      ;
+; -1.445 ; hcount[4] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.080     ; 2.366      ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'clock'                                                               ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; -0.766 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 0.500        ; 1.776      ; 3.294      ;
+; -0.251 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 1.000        ; 1.776      ; 3.279      ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold: 'clock'                                                               ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; 0.597 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 0.000        ; 1.842      ; 2.942      ;
+; 1.132 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; -0.500       ; 1.842      ; 2.977      ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold: 'vga_clk'                                                               ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; 0.624 ; vcount[3] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.411      ;
+; 0.751 ; vcount[7] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.063      ;
+; 0.752 ; vcount[6] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.064      ;
+; 0.752 ; vcount[5] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.064      ;
+; 0.754 ; vcount[4] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.066      ;
+; 0.755 ; vcount[3] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.542      ;
+; 0.764 ; vcount[3] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.551      ;
+; 0.770 ; vcount[1] ; vcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.062      ;
+; 0.770 ; hcount[7] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.062      ;
+; 0.770 ; hcount[1] ; hcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.062      ;
+; 0.770 ; vcount[1] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.557      ;
+; 0.771 ; vcount[8] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.063      ;
+; 0.772 ; hcount[3] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.064      ;
+; 0.772 ; hcount[2] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.064      ;
+; 0.774 ; hcount[4] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.066      ;
+; 0.790 ; hcount[6] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.082      ;
+; 0.796 ; hcount[0] ; hcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.088      ;
+; 0.875 ; vcount[9] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.187      ;
+; 0.895 ; vcount[3] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.682      ;
+; 0.901 ; vcount[1] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.688      ;
+; 0.910 ; vcount[1] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.697      ;
+; 1.019 ; vcount[8] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.806      ;
+; 1.036 ; vcount[3] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.823      ;
+; 1.041 ; vcount[1] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.828      ;
+; 1.043 ; vcount[3] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.830      ;
+; 1.080 ; vcount[1] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.867      ;
+; 1.084 ; vcount[1] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.871      ;
+; 1.106 ; vcount[5] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.418      ;
+; 1.106 ; vcount[1] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 1.893      ;
+; 1.113 ; vcount[6] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.425      ;
+; 1.115 ; vcount[4] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.427      ;
+; 1.115 ; vcount[2] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.427      ;
+; 1.124 ; vcount[4] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.436      ;
+; 1.125 ; hcount[1] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.417      ;
+; 1.126 ; hcount[3] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.418      ;
+; 1.128 ; hcount[5] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.420      ;
+; 1.133 ; hcount[2] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.425      ;
+; 1.134 ; hcount[0] ; hcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.426      ;
+; 1.142 ; hcount[2] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.434      ;
+; 1.143 ; hcount[0] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.435      ;
+; 1.144 ; hcount[4] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.436      ;
+; 1.151 ; hcount[6] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.443      ;
+; 1.164 ; vcount[3] ; vcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.456      ;
+; 1.174 ; hcount[5] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.466      ;
+; 1.177 ; hcount[8] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.469      ;
+; 1.197 ; hcount[8] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.572      ; 1.981      ;
+; 1.198 ; hcount[7] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.572      ; 1.982      ;
+; 1.213 ; hcount[4] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.572      ; 1.997      ;
+; 1.234 ; vcount[5] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.546      ;
+; 1.237 ; vcount[5] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.549      ;
+; 1.238 ; vcount[5] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.550      ;
+; 1.246 ; vcount[2] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.558      ;
+; 1.255 ; vcount[0] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.567      ;
+; 1.255 ; vcount[4] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.567      ;
+; 1.255 ; vcount[2] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.567      ;
+; 1.256 ; hcount[1] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.548      ;
+; 1.259 ; hcount[5] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.551      ;
+; 1.260 ; vcount[5] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.572      ;
+; 1.265 ; hcount[1] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.557      ;
+; 1.266 ; hcount[3] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.558      ;
+; 1.274 ; hcount[0] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.566      ;
+; 1.275 ; hcount[4] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.567      ;
+; 1.278 ; hcount[5] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.572      ; 2.062      ;
+; 1.282 ; hcount[2] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.574      ;
+; 1.283 ; hcount[0] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.575      ;
+; 1.285 ; vcount[2] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.597      ;
+; 1.296 ; hcount[9] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.608      ;
+; 1.350 ; hcount[6] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.572      ; 2.134      ;
+; 1.358 ; vcount[3] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.145      ;
+; 1.386 ; vcount[0] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.698      ;
+; 1.386 ; vcount[2] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.698      ;
+; 1.391 ; vcount[9] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.703      ;
+; 1.395 ; vcount[0] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.707      ;
+; 1.397 ; hcount[3] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.689      ;
+; 1.399 ; vcount[3] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.691      ;
+; 1.400 ; vcount[9] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.712      ;
+; 1.405 ; hcount[1] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.697      ;
+; 1.413 ; hcount[2] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.705      ;
+; 1.423 ; hcount[0] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.715      ;
+; 1.486 ; vcount[0] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.798      ;
+; 1.516 ; hcount[4] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.808      ;
+; 1.520 ; hcount[1] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.572      ; 2.304      ;
+; 1.525 ; hcount[7] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.817      ;
+; 1.526 ; vcount[0] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.100      ; 1.838      ;
+; 1.536 ; hcount[1] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.828      ;
+; 1.545 ; vcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.837      ;
+; 1.551 ; hcount[7] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.551 ; hcount[7] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.551 ; hcount[7] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.551 ; hcount[7] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.551 ; hcount[7] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.551 ; hcount[7] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.551 ; hcount[7] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.338      ;
+; 1.554 ; hcount[0] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.846      ;
+; 1.559 ; hcount[7] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.851      ;
+; 1.560 ; hcount[6] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.080      ; 1.852      ;
+; 1.566 ; hcount[4] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.353      ;
+; 1.566 ; hcount[4] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.353      ;
+; 1.566 ; hcount[4] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.353      ;
+; 1.566 ; hcount[4] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.575      ; 2.353      ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+
+
+-----------------------------------------------
+; Slow 1200mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 329.49 MHz ; 329.49 MHz      ; vga_clk    ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow 1200mV 0C Model Setup Summary ;
++---------+--------+-----------------+
+; Clock   ; Slack  ; End Point TNS   ;
++---------+--------+-----------------+
+; vga_clk ; -2.035 ; -27.749         ;
+; clock   ; -0.664 ; -0.664          ;
++---------+--------+-----------------+
+
+
++-----------------------------------+
+; Slow 1200mV 0C Model Hold Summary ;
++---------+-------+-----------------+
+; Clock   ; Slack ; End Point TNS   ;
++---------+-------+-----------------+
+; clock   ; 0.552 ; 0.000           ;
+; vga_clk ; 0.565 ; 0.000           ;
++---------+-------+-----------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++---------+--------+-------------------------------+
+; Clock   ; Slack  ; End Point TNS                 ;
++---------+--------+-------------------------------+
+; clock   ; -3.000 ; -4.487                        ;
+; vga_clk ; -1.487 ; -29.740                       ;
++---------+--------+-------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'vga_clk'                                                                ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; -2.035 ; hcount[9] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.534     ; 2.503      ;
+; -2.035 ; hcount[9] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.534     ; 2.503      ;
+; -2.035 ; hcount[9] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.534     ; 2.503      ;
+; -1.931 ; hcount[6] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.861      ;
+; -1.931 ; hcount[6] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.861      ;
+; -1.931 ; hcount[6] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.861      ;
+; -1.819 ; hcount[3] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.749      ;
+; -1.819 ; hcount[3] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.749      ;
+; -1.819 ; hcount[3] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.749      ;
+; -1.816 ; hcount[2] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.746      ;
+; -1.816 ; hcount[2] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.746      ;
+; -1.816 ; hcount[2] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.746      ;
+; -1.799 ; vcount[2] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 2.260      ;
+; -1.786 ; vcount[6] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 2.247      ;
+; -1.782 ; vcount[0] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 2.243      ;
+; -1.734 ; hcount[8] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.664      ;
+; -1.734 ; hcount[8] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.664      ;
+; -1.734 ; hcount[8] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.664      ;
+; -1.721 ; hcount[0] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.651      ;
+; -1.721 ; hcount[0] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.651      ;
+; -1.721 ; hcount[0] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.651      ;
+; -1.681 ; vcount[0] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.592      ;
+; -1.660 ; vcount[7] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 2.121      ;
+; -1.650 ; hcount[9] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.534     ; 2.118      ;
+; -1.650 ; hcount[9] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.534     ; 2.118      ;
+; -1.620 ; hcount[1] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.550      ;
+; -1.597 ; vcount[0] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 2.058      ;
+; -1.589 ; hcount[1] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.519      ;
+; -1.589 ; hcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.519      ;
+; -1.589 ; hcount[1] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.519      ;
+; -1.582 ; vcount[9] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 2.043      ;
+; -1.551 ; vcount[2] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.462      ;
+; -1.547 ; hcount[9] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.547 ; hcount[9] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.547 ; hcount[9] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.547 ; hcount[9] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.547 ; hcount[9] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.547 ; hcount[9] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.547 ; hcount[9] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; -0.084     ; 2.465      ;
+; -1.546 ; hcount[6] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.476      ;
+; -1.546 ; hcount[6] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.476      ;
+; -1.534 ; hcount[0] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.464      ;
+; -1.516 ; vcount[8] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.446      ;
+; -1.500 ; hcount[3] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.430      ;
+; -1.481 ; hcount[5] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.411      ;
+; -1.481 ; hcount[5] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.411      ;
+; -1.481 ; hcount[5] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.411      ;
+; -1.479 ; vcount[2] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 1.940      ;
+; -1.445 ; vcount[5] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 1.906      ;
+; -1.443 ; hcount[6] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.443 ; hcount[6] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.443 ; hcount[6] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.443 ; hcount[6] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.443 ; hcount[6] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.443 ; hcount[6] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.443 ; hcount[6] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.823      ;
+; -1.438 ; vcount[4] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.349      ;
+; -1.434 ; hcount[3] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.364      ;
+; -1.431 ; hcount[2] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.361      ;
+; -1.431 ; hcount[2] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.361      ;
+; -1.417 ; hcount[9] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.090     ; 2.329      ;
+; -1.416 ; hcount[0] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.346      ;
+; -1.391 ; vcount[4] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 1.852      ;
+; -1.374 ; hcount[5] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.304      ;
+; -1.361 ; hcount[0] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.372      ; 2.735      ;
+; -1.357 ; vcount[4] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 1.818      ;
+; -1.354 ; hcount[7] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.284      ;
+; -1.354 ; hcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.284      ;
+; -1.354 ; hcount[7] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.284      ;
+; -1.349 ; hcount[8] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.279      ;
+; -1.349 ; hcount[8] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.279      ;
+; -1.340 ; vcount[6] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.251      ;
+; -1.336 ; vcount[6] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.247      ;
+; -1.336 ; vcount[6] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.247      ;
+; -1.331 ; hcount[3] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.331 ; hcount[3] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.331 ; hcount[3] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.331 ; hcount[3] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.331 ; hcount[3] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.331 ; hcount[3] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.331 ; hcount[3] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.711      ;
+; -1.328 ; hcount[2] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.328 ; hcount[2] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.328 ; hcount[2] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.328 ; hcount[2] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.328 ; hcount[2] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.328 ; hcount[2] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.328 ; hcount[2] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.708      ;
+; -1.319 ; vcount[5] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.230      ;
+; -1.317 ; vcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.541     ; 1.778      ;
+; -1.313 ; hcount[6] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.372      ; 2.687      ;
+; -1.302 ; vcount[0] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.091     ; 2.213      ;
+; -1.295 ; hcount[1] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.225      ;
+; -1.293 ; hcount[4] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.223      ;
+; -1.293 ; hcount[4] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.223      ;
+; -1.293 ; hcount[4] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.223      ;
+; -1.284 ; hcount[4] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.072     ; 2.214      ;
+; -1.269 ; hcount[1] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.372      ; 2.643      ;
+; -1.246 ; hcount[8] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.626      ;
+; -1.246 ; hcount[8] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.378      ; 2.626      ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'clock'                                                                ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; -0.664 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 0.500        ; 1.659      ; 3.055      ;
+; -0.151 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 1.000        ; 1.659      ; 3.042      ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold: 'clock'                                                                ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; 0.552 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 0.000        ; 1.718      ; 2.735      ;
+; 1.078 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; -0.500       ; 1.718      ; 2.761      ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold: 'vga_clk'                                                                ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; 0.565 ; vcount[3] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.301      ;
+; 0.660 ; vcount[3] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.396      ;
+; 0.687 ; vcount[3] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.423      ;
+; 0.690 ; vcount[1] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.426      ;
+; 0.695 ; vcount[7] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 0.981      ;
+; 0.696 ; vcount[5] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 0.982      ;
+; 0.696 ; vcount[6] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 0.982      ;
+; 0.701 ; vcount[4] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 0.987      ;
+; 0.712 ; hcount[1] ; hcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.979      ;
+; 0.714 ; hcount[7] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.981      ;
+; 0.715 ; vcount[8] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.982      ;
+; 0.715 ; vcount[1] ; vcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.982      ;
+; 0.717 ; hcount[3] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.984      ;
+; 0.717 ; hcount[2] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.984      ;
+; 0.720 ; hcount[4] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 0.987      ;
+; 0.734 ; hcount[6] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.001      ;
+; 0.742 ; hcount[0] ; hcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.009      ;
+; 0.782 ; vcount[3] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.518      ;
+; 0.787 ; vcount[1] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.523      ;
+; 0.797 ; vcount[9] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.083      ;
+; 0.812 ; vcount[1] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.548      ;
+; 0.909 ; vcount[1] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.645      ;
+; 0.909 ; vcount[8] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.645      ;
+; 0.923 ; vcount[3] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.659      ;
+; 0.931 ; vcount[3] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.667      ;
+; 0.978 ; vcount[1] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.714      ;
+; 0.982 ; vcount[1] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.718      ;
+; 1.000 ; vcount[1] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.736      ;
+; 1.015 ; vcount[6] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.301      ;
+; 1.020 ; vcount[4] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.306      ;
+; 1.020 ; vcount[5] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.306      ;
+; 1.024 ; vcount[2] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.310      ;
+; 1.034 ; hcount[1] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.301      ;
+; 1.035 ; vcount[4] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.321      ;
+; 1.036 ; hcount[2] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.303      ;
+; 1.037 ; hcount[0] ; hcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.304      ;
+; 1.041 ; hcount[3] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.308      ;
+; 1.041 ; hcount[5] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.308      ;
+; 1.051 ; hcount[2] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.318      ;
+; 1.052 ; hcount[6] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.319      ;
+; 1.052 ; hcount[0] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.319      ;
+; 1.054 ; hcount[4] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.321      ;
+; 1.061 ; hcount[4] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.534      ; 1.790      ;
+; 1.075 ; hcount[7] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.534      ; 1.804      ;
+; 1.079 ; vcount[3] ; vcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.346      ;
+; 1.085 ; hcount[8] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.534      ; 1.814      ;
+; 1.087 ; hcount[5] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.354      ;
+; 1.090 ; hcount[8] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.357      ;
+; 1.118 ; vcount[5] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.404      ;
+; 1.122 ; vcount[5] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.408      ;
+; 1.126 ; vcount[5] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.412      ;
+; 1.130 ; hcount[1] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.397      ;
+; 1.131 ; vcount[2] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.417      ;
+; 1.137 ; hcount[5] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.534      ; 1.866      ;
+; 1.139 ; hcount[5] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.406      ;
+; 1.142 ; vcount[4] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.428      ;
+; 1.144 ; vcount[5] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.430      ;
+; 1.146 ; vcount[2] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.432      ;
+; 1.148 ; vcount[0] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.434      ;
+; 1.156 ; hcount[1] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.423      ;
+; 1.159 ; hcount[0] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.426      ;
+; 1.161 ; hcount[4] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.428      ;
+; 1.163 ; hcount[3] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.430      ;
+; 1.173 ; hcount[2] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.440      ;
+; 1.174 ; hcount[0] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.441      ;
+; 1.194 ; vcount[3] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 1.930      ;
+; 1.198 ; vcount[2] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.484      ;
+; 1.212 ; hcount[9] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.090      ; 1.497      ;
+; 1.218 ; hcount[6] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.534      ; 1.947      ;
+; 1.234 ; vcount[9] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.520      ;
+; 1.242 ; vcount[9] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.528      ;
+; 1.253 ; vcount[2] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.539      ;
+; 1.254 ; vcount[0] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.540      ;
+; 1.261 ; hcount[3] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.528      ;
+; 1.270 ; vcount[0] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.556      ;
+; 1.278 ; vcount[3] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.545      ;
+; 1.278 ; hcount[1] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.545      ;
+; 1.280 ; hcount[2] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.547      ;
+; 1.296 ; hcount[0] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.563      ;
+; 1.357 ; vcount[0] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.643      ;
+; 1.358 ; hcount[1] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.534      ; 2.087      ;
+; 1.374 ; hcount[1] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.641      ;
+; 1.376 ; vcount[0] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.091      ; 1.662      ;
+; 1.382 ; hcount[4] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.649      ;
+; 1.395 ; hcount[7] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.662      ;
+; 1.403 ; hcount[4] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; hcount[4] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; hcount[4] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; hcount[4] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; hcount[4] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; hcount[4] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; hcount[4] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.139      ;
+; 1.403 ; vcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.670      ;
+; 1.403 ; hcount[0] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.670      ;
+; 1.412 ; hcount[4] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.072      ; 1.679      ;
+; 1.417 ; hcount[7] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.153      ;
+; 1.417 ; hcount[7] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.153      ;
+; 1.417 ; hcount[7] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.153      ;
+; 1.417 ; hcount[7] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.153      ;
+; 1.417 ; hcount[7] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.541      ; 2.153      ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Slow 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------+
+; Fast 1200mV 0C Model Setup Summary ;
++---------+--------+-----------------+
+; Clock   ; Slack  ; End Point TNS   ;
++---------+--------+-----------------+
+; vga_clk ; -0.391 ; -3.172          ;
+; clock   ; -0.084 ; -0.084          ;
++---------+--------+-----------------+
+
+
++-----------------------------------+
+; Fast 1200mV 0C Model Hold Summary ;
++---------+-------+-----------------+
+; Clock   ; Slack ; End Point TNS   ;
++---------+-------+-----------------+
+; vga_clk ; 0.255 ; 0.000           ;
+; clock   ; 0.262 ; 0.000           ;
++---------+-------+-----------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++---------+--------+-------------------------------+
+; Clock   ; Slack  ; End Point TNS                 ;
++---------+--------+-------------------------------+
+; clock   ; -3.000 ; -4.310                        ;
+; vga_clk ; -1.000 ; -20.000                       ;
++---------+--------+-------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'vga_clk'                                                                ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; -0.391 ; hcount[9] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.236     ; 1.142      ;
+; -0.391 ; hcount[9] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.236     ; 1.142      ;
+; -0.391 ; hcount[9] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.236     ; 1.142      ;
+; -0.338 ; hcount[2] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.289      ;
+; -0.338 ; hcount[2] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.289      ;
+; -0.338 ; hcount[2] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.289      ;
+; -0.334 ; hcount[3] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.285      ;
+; -0.334 ; hcount[3] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.285      ;
+; -0.334 ; hcount[3] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.285      ;
+; -0.330 ; hcount[6] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.281      ;
+; -0.330 ; hcount[6] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.281      ;
+; -0.330 ; hcount[6] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.281      ;
+; -0.280 ; vcount[2] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 1.030      ;
+; -0.273 ; hcount[0] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.224      ;
+; -0.273 ; hcount[0] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.224      ;
+; -0.273 ; hcount[0] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.224      ;
+; -0.270 ; vcount[0] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 1.020      ;
+; -0.264 ; hcount[1] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.215      ;
+; -0.262 ; vcount[0] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.205      ;
+; -0.261 ; vcount[6] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 1.011      ;
+; -0.257 ; hcount[8] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.208      ;
+; -0.257 ; hcount[8] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.208      ;
+; -0.257 ; hcount[8] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.208      ;
+; -0.243 ; vcount[0] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.993      ;
+; -0.221 ; hcount[0] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.172      ;
+; -0.213 ; hcount[9] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.236     ; 0.964      ;
+; -0.213 ; hcount[9] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.236     ; 0.964      ;
+; -0.204 ; vcount[7] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.954      ;
+; -0.201 ; hcount[1] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.152      ;
+; -0.201 ; hcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.152      ;
+; -0.201 ; hcount[1] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.152      ;
+; -0.201 ; hcount[3] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.152      ;
+; -0.195 ; vcount[2] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.138      ;
+; -0.188 ; vcount[9] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.938      ;
+; -0.177 ; hcount[9] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.177 ; hcount[9] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.177 ; hcount[9] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.177 ; hcount[9] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.177 ; hcount[9] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.177 ; hcount[9] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.177 ; hcount[9] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; -0.043     ; 1.121      ;
+; -0.176 ; vcount[2] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.926      ;
+; -0.164 ; vcount[8] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.037     ; 1.114      ;
+; -0.160 ; hcount[2] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.111      ;
+; -0.160 ; hcount[2] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.111      ;
+; -0.159 ; vcount[5] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.909      ;
+; -0.158 ; hcount[6] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.109      ;
+; -0.158 ; hcount[6] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.109      ;
+; -0.156 ; hcount[3] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.107      ;
+; -0.150 ; hcount[1] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.155      ; 1.292      ;
+; -0.145 ; vcount[5] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.088      ;
+; -0.139 ; hcount[0] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.155      ; 1.281      ;
+; -0.136 ; hcount[9] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.045     ; 1.078      ;
+; -0.136 ; hcount[5] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.087      ;
+; -0.131 ; hcount[1] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.082      ;
+; -0.130 ; vcount[4] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.073      ;
+; -0.124 ; hcount[2] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.124 ; hcount[2] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.124 ; hcount[2] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.124 ; hcount[2] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.124 ; hcount[2] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.124 ; hcount[2] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.124 ; hcount[2] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.268      ;
+; -0.123 ; hcount[6] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.123 ; hcount[6] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.123 ; hcount[6] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.123 ; hcount[6] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.123 ; hcount[6] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.123 ; hcount[6] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.123 ; hcount[6] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.267      ;
+; -0.120 ; hcount[0] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.071      ;
+; -0.120 ; hcount[3] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.120 ; hcount[3] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.120 ; hcount[3] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.120 ; hcount[3] ; vcount[7] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.120 ; hcount[3] ; vcount[6] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.120 ; hcount[3] ; vcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.120 ; hcount[3] ; vcount[4] ; vga_clk      ; vga_clk     ; 1.000        ; 0.157      ; 1.264      ;
+; -0.112 ; vcount[4] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.862      ;
+; -0.106 ; vcount[4] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.856      ;
+; -0.096 ; hcount[5] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.047      ;
+; -0.096 ; hcount[5] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.047      ;
+; -0.096 ; hcount[5] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.047      ;
+; -0.093 ; vcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.037     ; 1.043      ;
+; -0.092 ; vcount[0] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.035      ;
+; -0.091 ; vcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.237     ; 0.841      ;
+; -0.087 ; hcount[3] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.155      ; 1.229      ;
+; -0.086 ; hcount[4] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.037      ;
+; -0.083 ; hcount[2] ; hcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.155      ; 1.225      ;
+; -0.079 ; vcount[1] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; 0.156      ; 1.222      ;
+; -0.079 ; hcount[8] ; hcount[5] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.030      ;
+; -0.079 ; hcount[8] ; hcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.030      ;
+; -0.077 ; vcount[7] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.020      ;
+; -0.075 ; hcount[7] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.026      ;
+; -0.075 ; hcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.026      ;
+; -0.075 ; hcount[7] ; vcount[1] ; vga_clk      ; vga_clk     ; 1.000        ; -0.036     ; 1.026      ;
+; -0.072 ; vcount[6] ; vcount[2] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.015      ;
+; -0.067 ; vcount[6] ; vcount[0] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.010      ;
+; -0.067 ; vcount[6] ; vcount[9] ; vga_clk      ; vga_clk     ; 1.000        ; -0.044     ; 1.010      ;
+; -0.065 ; vcount[1] ; vcount[3] ; vga_clk      ; vga_clk     ; 1.000        ; -0.037     ; 1.015      ;
++--------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'clock'                                                                ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; -0.084 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 0.500        ; 0.701      ; 1.367      ;
+; 0.420  ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 1.000        ; 0.701      ; 1.363      ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Hold: 'vga_clk'                                                                ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+; 0.255 ; vcount[3] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.576      ;
+; 0.302 ; vcount[7] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.430      ;
+; 0.302 ; vcount[6] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.430      ;
+; 0.302 ; vcount[5] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.430      ;
+; 0.304 ; vcount[4] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.432      ;
+; 0.308 ; hcount[1] ; hcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.428      ;
+; 0.309 ; vcount[8] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.037      ; 0.430      ;
+; 0.309 ; vcount[1] ; vcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.037      ; 0.430      ;
+; 0.310 ; hcount[7] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.430      ;
+; 0.310 ; hcount[3] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.430      ;
+; 0.310 ; hcount[2] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.430      ;
+; 0.311 ; hcount[4] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.431      ;
+; 0.318 ; vcount[3] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.639      ;
+; 0.319 ; hcount[6] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.439      ;
+; 0.321 ; vcount[3] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.642      ;
+; 0.322 ; hcount[0] ; hcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.442      ;
+; 0.324 ; vcount[1] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.645      ;
+; 0.355 ; vcount[9] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.483      ;
+; 0.384 ; vcount[3] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.705      ;
+; 0.387 ; vcount[1] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.708      ;
+; 0.390 ; vcount[1] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.711      ;
+; 0.396 ; vcount[3] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.717      ;
+; 0.404 ; vcount[3] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.725      ;
+; 0.422 ; vcount[8] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.743      ;
+; 0.451 ; vcount[5] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.579      ;
+; 0.453 ; vcount[1] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.774      ;
+; 0.457 ; hcount[1] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.577      ;
+; 0.459 ; vcount[3] ; vcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.037      ; 0.580      ;
+; 0.459 ; hcount[3] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.579      ;
+; 0.460 ; vcount[6] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.588      ;
+; 0.461 ; vcount[2] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.589      ;
+; 0.462 ; vcount[1] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.783      ;
+; 0.462 ; vcount[4] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.590      ;
+; 0.462 ; hcount[5] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.582      ;
+; 0.465 ; vcount[4] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.593      ;
+; 0.466 ; vcount[1] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.787      ;
+; 0.467 ; hcount[5] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.587      ;
+; 0.468 ; hcount[2] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.588      ;
+; 0.469 ; hcount[8] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.589      ;
+; 0.469 ; hcount[0] ; hcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.589      ;
+; 0.471 ; hcount[2] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.591      ;
+; 0.472 ; hcount[0] ; hcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.592      ;
+; 0.472 ; hcount[4] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.592      ;
+; 0.476 ; hcount[4] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.796      ;
+; 0.476 ; vcount[1] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.797      ;
+; 0.477 ; hcount[6] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.597      ;
+; 0.486 ; hcount[8] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.806      ;
+; 0.513 ; vcount[2] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.641      ;
+; 0.514 ; vcount[5] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.642      ;
+; 0.519 ; hcount[9] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.045      ; 0.648      ;
+; 0.520 ; hcount[1] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.640      ;
+; 0.522 ; hcount[7] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.842      ;
+; 0.523 ; hcount[1] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.643      ;
+; 0.524 ; vcount[2] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.652      ;
+; 0.525 ; hcount[3] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.645      ;
+; 0.525 ; hcount[5] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.645      ;
+; 0.526 ; vcount[0] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.654      ;
+; 0.527 ; vcount[2] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.655      ;
+; 0.528 ; vcount[3] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.849      ;
+; 0.528 ; vcount[4] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.656      ;
+; 0.530 ; vcount[5] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.658      ;
+; 0.534 ; vcount[5] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.662      ;
+; 0.535 ; hcount[0] ; hcount[3] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.655      ;
+; 0.535 ; hcount[4] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.655      ;
+; 0.537 ; hcount[2] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.657      ;
+; 0.538 ; vcount[9] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.666      ;
+; 0.538 ; hcount[0] ; hcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.658      ;
+; 0.543 ; vcount[5] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.671      ;
+; 0.546 ; vcount[9] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.674      ;
+; 0.556 ; hcount[6] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.876      ;
+; 0.567 ; hcount[5] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.887      ;
+; 0.587 ; vcount[3] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.037      ; 0.708      ;
+; 0.588 ; hcount[3] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.708      ;
+; 0.589 ; vcount[0] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.717      ;
+; 0.589 ; hcount[1] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.709      ;
+; 0.590 ; vcount[2] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.718      ;
+; 0.592 ; vcount[0] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.720      ;
+; 0.594 ; hcount[1] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.914      ;
+; 0.600 ; hcount[2] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.720      ;
+; 0.601 ; vcount[0] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.729      ;
+; 0.604 ; hcount[0] ; hcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.724      ;
+; 0.613 ; hcount[7] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.733      ;
+; 0.621 ; hcount[4] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.741      ;
+; 0.621 ; hcount[4] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.741      ;
+; 0.634 ; hcount[6] ; hcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.754      ;
+; 0.641 ; vcount[2] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.769      ;
+; 0.642 ; hcount[4] ; vcount[2] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.642 ; hcount[4] ; vcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.642 ; hcount[4] ; vcount[0] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.642 ; hcount[4] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.642 ; hcount[4] ; vcount[6] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.642 ; hcount[4] ; vcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.642 ; hcount[4] ; vcount[4] ; vga_clk      ; vga_clk     ; 0.000        ; 0.237      ; 0.963      ;
+; 0.651 ; vcount[7] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; -0.156     ; 0.579      ;
+; 0.652 ; hcount[1] ; hcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.772      ;
+; 0.653 ; hcount[0] ; hcount[9] ; vga_clk      ; vga_clk     ; 0.000        ; 0.236      ; 0.973      ;
+; 0.654 ; hcount[7] ; hcount[5] ; vga_clk      ; vga_clk     ; 0.000        ; 0.036      ; 0.774      ;
+; 0.655 ; vcount[0] ; vcount[7] ; vga_clk      ; vga_clk     ; 0.000        ; 0.044      ; 0.783      ;
+; 0.656 ; vcount[1] ; vcount[8] ; vga_clk      ; vga_clk     ; 0.000        ; 0.037      ; 0.777      ;
+; 0.657 ; vcount[0] ; vcount[1] ; vga_clk      ; vga_clk     ; 0.000        ; -0.156     ; 0.585      ;
++-------+-----------+-----------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Hold: 'clock'                                                                ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; 0.262 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; 0.000        ; 0.731      ; 1.212      ;
+; 0.779 ; vga_clk   ; vga_clk ; vga_clk      ; clock       ; -0.500       ; 0.731      ; 1.229      ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Fast 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++-------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                           ;
++------------------+---------+-------+----------+---------+---------------------+
+; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+---------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -2.232  ; 0.255 ; N/A      ; N/A     ; -3.000              ;
+;  clock           ; -0.766  ; 0.262 ; N/A      ; N/A     ; -3.000              ;
+;  vga_clk         ; -2.232  ; 0.255 ; N/A      ; N/A     ; -1.487              ;
+; Design-wide TNS  ; -32.475 ; 0.0   ; 0.0      ; 0.0     ; -34.227             ;
+;  clock           ; -0.766  ; 0.000 ; N/A      ; N/A     ; -4.487              ;
+;  vga_clk         ; -31.709 ; 0.000 ; N/A      ; N/A     ; -29.740             ;
++------------------+---------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                    ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin           ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; disp_R        ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; disp_G        ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; disp_B        ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; hsync         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; vsync         ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_DCLK~ ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++----------------------------------------------------------------------------+
+; Input Transition Times                                                     ;
++-------------------------+--------------+-----------------+-----------------+
+; Pin                     ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++-------------------------+--------------+-----------------+-----------------+
+; clock                   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_ASDO_DATA1~     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_FLASH_nCE_nCSO~ ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_DATA0~          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
++-------------------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; disp_R        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.38e-09 V                   ; 3.12 V              ; -0.0818 V           ; 0.205 V                              ; 0.244 V                              ; 8.86e-10 s                  ; 6.56e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 6.38e-09 V                  ; 3.12 V             ; -0.0818 V          ; 0.205 V                             ; 0.244 V                             ; 8.86e-10 s                 ; 6.56e-10 s                 ; No                        ; No                        ;
+; disp_G        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.38e-09 V                   ; 3.09 V              ; -0.011 V            ; 0.226 V                              ; 0.296 V                              ; 4.86e-09 s                  ; 3.55e-09 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 6.38e-09 V                  ; 3.09 V             ; -0.011 V           ; 0.226 V                             ; 0.296 V                             ; 4.86e-09 s                 ; 3.55e-09 s                 ; Yes                       ; Yes                       ;
+; disp_B        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.38e-09 V                   ; 3.13 V              ; -0.117 V            ; 0.15 V                               ; 0.263 V                              ; 6.31e-10 s                  ; 4.46e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 6.38e-09 V                  ; 3.13 V             ; -0.117 V           ; 0.15 V                              ; 0.263 V                             ; 6.31e-10 s                 ; 4.46e-10 s                 ; No                        ; No                        ;
+; hsync         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.38e-09 V                   ; 3.12 V              ; -0.0818 V           ; 0.205 V                              ; 0.244 V                              ; 8.86e-10 s                  ; 6.56e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 6.38e-09 V                  ; 3.12 V             ; -0.0818 V          ; 0.205 V                             ; 0.244 V                             ; 8.86e-10 s                 ; 6.56e-10 s                 ; No                        ; No                        ;
+; vsync         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 6.38e-09 V                   ; 3.12 V              ; -0.0818 V           ; 0.205 V                              ; 0.244 V                              ; 8.86e-10 s                  ; 6.56e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 6.38e-09 V                  ; 3.12 V             ; -0.0818 V          ; 0.205 V                             ; 0.244 V                             ; 8.86e-10 s                 ; 6.56e-10 s                 ; No                        ; No                        ;
+; ~ALTERA_DCLK~ ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.51e-09 V                   ; 3.18 V              ; -0.157 V            ; 0.147 V                              ; 0.259 V                              ; 2.81e-10 s                  ; 2.53e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.51e-09 V                  ; 3.18 V             ; -0.157 V           ; 0.147 V                             ; 0.259 V                             ; 2.81e-10 s                 ; 2.53e-10 s                 ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; disp_R        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 5.04e-07 V                   ; 3.11 V              ; -0.0469 V           ; 0.191 V                              ; 0.215 V                              ; 1.08e-09 s                  ; 8.62e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 5.04e-07 V                  ; 3.11 V             ; -0.0469 V          ; 0.191 V                             ; 0.215 V                             ; 1.08e-09 s                 ; 8.62e-10 s                 ; Yes                       ; No                        ;
+; disp_G        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 5.04e-07 V                   ; 3.08 V              ; -0.0053 V           ; 0.206 V                              ; 0.247 V                              ; 5.77e-09 s                  ; 4.45e-09 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 5.04e-07 V                  ; 3.08 V             ; -0.0053 V          ; 0.206 V                             ; 0.247 V                             ; 5.77e-09 s                 ; 4.45e-09 s                 ; Yes                       ; Yes                       ;
+; disp_B        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 5.04e-07 V                   ; 3.11 V              ; -0.0624 V           ; 0.233 V                              ; 0.172 V                              ; 6.86e-10 s                  ; 6.33e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 5.04e-07 V                  ; 3.11 V             ; -0.0624 V          ; 0.233 V                             ; 0.172 V                             ; 6.86e-10 s                 ; 6.33e-10 s                 ; Yes                       ; No                        ;
+; hsync         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 5.04e-07 V                   ; 3.11 V              ; -0.0469 V           ; 0.191 V                              ; 0.215 V                              ; 1.08e-09 s                  ; 8.62e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 5.04e-07 V                  ; 3.11 V             ; -0.0469 V          ; 0.191 V                             ; 0.215 V                             ; 1.08e-09 s                 ; 8.62e-10 s                 ; Yes                       ; No                        ;
+; vsync         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 5.04e-07 V                   ; 3.11 V              ; -0.0469 V           ; 0.191 V                              ; 0.215 V                              ; 1.08e-09 s                  ; 8.62e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 5.04e-07 V                  ; 3.11 V             ; -0.0469 V          ; 0.191 V                             ; 0.215 V                             ; 1.08e-09 s                 ; 8.62e-10 s                 ; Yes                       ; No                        ;
+; ~ALTERA_DCLK~ ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.6e-07 V                    ; 3.13 V              ; -0.103 V            ; 0.164 V                              ; 0.134 V                              ; 3.14e-10 s                  ; 4.05e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.6e-07 V                   ; 3.13 V             ; -0.103 V           ; 0.164 V                             ; 0.134 V                             ; 3.14e-10 s                 ; 4.05e-10 s                 ; Yes                       ; No                        ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; disp_R        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 1.25e-07 V                   ; 3.57 V              ; -0.0855 V           ; 0.315 V                              ; 0.175 V                              ; 6.79e-10 s                  ; 6.15e-10 s                  ; No                         ; No                         ; 3.46 V                      ; 1.25e-07 V                  ; 3.57 V             ; -0.0855 V          ; 0.315 V                             ; 0.175 V                             ; 6.79e-10 s                 ; 6.15e-10 s                 ; No                        ; No                        ;
+; disp_G        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 1.25e-07 V                   ; 3.48 V              ; -0.0162 V           ; 0.354 V                              ; 0.317 V                              ; 3.88e-09 s                  ; 3.06e-09 s                  ; No                         ; No                         ; 3.46 V                      ; 1.25e-07 V                  ; 3.48 V             ; -0.0162 V          ; 0.354 V                             ; 0.317 V                             ; 3.88e-09 s                 ; 3.06e-09 s                 ; No                        ; No                        ;
+; disp_B        ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 1.25e-07 V                   ; 3.6 V               ; -0.127 V            ; 0.302 V                              ; 0.21 V                               ; 4.55e-10 s                  ; 4.11e-10 s                  ; No                         ; No                         ; 3.46 V                      ; 1.25e-07 V                  ; 3.6 V              ; -0.127 V           ; 0.302 V                             ; 0.21 V                              ; 4.55e-10 s                 ; 4.11e-10 s                 ; No                        ; No                        ;
+; hsync         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 1.25e-07 V                   ; 3.57 V              ; -0.0855 V           ; 0.315 V                              ; 0.175 V                              ; 6.79e-10 s                  ; 6.15e-10 s                  ; No                         ; No                         ; 3.46 V                      ; 1.25e-07 V                  ; 3.57 V             ; -0.0855 V          ; 0.315 V                             ; 0.175 V                             ; 6.79e-10 s                 ; 6.15e-10 s                 ; No                        ; No                        ;
+; vsync         ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 1.25e-07 V                   ; 3.57 V              ; -0.0855 V           ; 0.315 V                              ; 0.175 V                              ; 6.79e-10 s                  ; 6.15e-10 s                  ; No                         ; No                         ; 3.46 V                      ; 1.25e-07 V                  ; 3.57 V             ; -0.0855 V          ; 0.315 V                             ; 0.175 V                             ; 6.79e-10 s                 ; 6.15e-10 s                 ; No                        ; No                        ;
+; ~ALTERA_DCLK~ ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 6.54e-08 V                   ; 3.66 V              ; -0.26 V             ; 0.41 V                               ; 0.32 V                               ; 1.57e-10 s                  ; 2.15e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 6.54e-08 V                  ; 3.66 V             ; -0.26 V            ; 0.41 V                              ; 0.32 V                              ; 1.57e-10 s                 ; 2.15e-10 s                 ; No                        ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; vga_clk    ; clock    ; 1        ; 1        ; 0        ; 0        ;
+; vga_clk    ; vga_clk  ; 280      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; vga_clk    ; clock    ; 1        ; 1        ; 0        ; 0        ;
+; vga_clk    ; vga_clk  ; 280      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 0     ; 0    ;
+; Unconstrained Input Port Paths  ; 0     ; 0    ;
+; Unconstrained Output Ports      ; 5     ; 5    ;
+; Unconstrained Output Port Paths ; 74    ; 74   ;
++---------------------------------+-------+------+
+
+
++----------------------------------------+
+; Clock Status Summary                   ;
++---------+---------+------+-------------+
+; Target  ; Clock   ; Type ; Status      ;
++---------+---------+------+-------------+
+; clock   ; clock   ; Base ; Constrained ;
+; vga_clk ; vga_clk ; Base ; Constrained ;
++---------+---------+------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; disp_B      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; disp_G      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; disp_R      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; hsync       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; vsync       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; disp_B      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; disp_G      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; disp_R      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; hsync       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; vsync       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime TimeQuest Timing Analyzer
+    Info: Version 16.1.1 Build 200 11/30/2016 SJ Standard Edition
+    Info: Processing started: Thu Nov 02 22:51:07 2017
+Info: Command: quartus_sta vga -c vga
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'vga.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name vga_clk vga_clk
+    Info (332105): create_clock -period 1.000 -name clock clock
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.232
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.232             -31.709 vga_clk 
+    Info (332119):    -0.766              -0.766 clock 
+Info (332146): Worst-case hold slack is 0.597
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.597               0.000 clock 
+    Info (332119):     0.624               0.000 vga_clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000              -4.487 clock 
+    Info (332119):    -1.487             -29.740 vga_clk 
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.035
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.035             -27.749 vga_clk 
+    Info (332119):    -0.664              -0.664 clock 
+Info (332146): Worst-case hold slack is 0.552
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.552               0.000 clock 
+    Info (332119):     0.565               0.000 vga_clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000              -4.487 clock 
+    Info (332119):    -1.487             -29.740 vga_clk 
+Info: Analyzing Fast 1200mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.391
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.391              -3.172 vga_clk 
+    Info (332119):    -0.084              -0.084 clock 
+Info (332146): Worst-case hold slack is 0.255
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.255               0.000 vga_clk 
+    Info (332119):     0.262               0.000 clock 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000              -4.310 clock 
+    Info (332119):    -1.000             -20.000 vga_clk 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 577 megabytes
+    Info: Processing ended: Thu Nov 02 22:51:17 2017
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:07
+
+

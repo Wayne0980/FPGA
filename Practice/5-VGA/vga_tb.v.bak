@@ -1,0 +1,28 @@
+`timescale 1 ns/ 1 s
+module vga_tb();
+
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg clk;
+reg rst_n;
+// wires                                               
+wire [2:0]disp_RGB;
+
+wire vsync;
+wire hsyne;
+
+vga(
+	.clock(clk),
+	.disp_RGB(disp_RGB),
+	.hsync(hsync),
+	.vsync(vsync)
+	);
+	
+initial                                                
+begin                                                  
+	clk = 0;
+	forever #10 clk = ~clk;
+end                                                    
+
+endmodule
