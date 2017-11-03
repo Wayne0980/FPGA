@@ -10,3 +10,6 @@ Practice/4-uart         控制UART發送出接收到的字(EP4CE6E22C8) </br>
 ![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/4-UART/20171029_152248.gif)</br>
 Practice/5-VGA          Show shapes in TV via VGA port(600*480)(EP4CE6E22C8) </br>
 ![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/5-VGA/IMAG1375-20171102-225626172.jpg)</br>
+Practice/6_VGA_Char     Show text in TV via VGA port(600*480)(EP4CE6E22C8) </br>
+The text "s" will be modified when I have time</br>
+![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/6_VGA_Char/IMAG1376.jpg)</br>

@@ -1,0 +1,9 @@
+|VGA_Char
+clk => clk_25m.CLK
+hsync <= hsync_r.DB_MAX_OUTPUT_PORT_TYPE
+vsync <= vsync_r.DB_MAX_OUTPUT_PORT_TYPE
+vga_r <= vga_rgb[7].DB_MAX_OUTPUT_PORT_TYPE
+vga_g <= vga_rgb[4].DB_MAX_OUTPUT_PORT_TYPE
+vga_b <= vga_rgb[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
