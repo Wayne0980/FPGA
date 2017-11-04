@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at VGA_Char.v(53): always construct contains both blocking and non-blocking assignments File: C:/Users/Q/Desktop/Wayne/FPGA/6_VGA_Char/VGA_Char.v Line: 53

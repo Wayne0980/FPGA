@@ -2,7 +2,8 @@
 
 module VGA_Char(	
 				clk,
-				hsync,vsync,vga_r,vga_g,vga_b	
+				hsync,vsync,vga_r,vga_g,vga_b,
+				seg,dig	
 			);
 			
 reg  clk_25m;
@@ -18,6 +19,14 @@ output vga_b;
 reg[9:0] x_cnt;		
 reg[9:0] y_cnt;		
 
+output[7:0] seg;
+output[3:0] dig;
+
+reg [7:0] seg;
+reg [3:0] dig;
+
+reg [36:0] count;
+
 parameter hsync_end   = 10'd95,
    hdat_begin  = 10'd143,
    hdat_end  = 10'd783,
@@ -26,10 +35,38 @@ parameter hsync_end   = 10'd95,
    vdat_begin  = 10'd34,
    vdat_end  = 10'd514,
    vline_end  = 10'd524;
+	
 always @ (posedge clk)
-
 begin
 clk_25m = ~clk_25m;   // 1/2 clk
+end
+
+
+always@(posedge clk_25m)
+begin
+	count = count +1;
+	if(count==1000)
+	begin
+		seg = 8'hc7;
+		dig = 4'b1110; //"0"
+	end
+	if(count==2000)
+   begin 
+	   seg = 8'hf9;
+		dig = 4'b1101; //"0"
+	end
+	if(count==3000)
+	begin
+      seg = 8'h8c;
+		dig = 4'b1011; //"0"
+	end
+	if(count==4000)
+	begin
+		seg = 8'h92;
+		dig = 4'b0111; //"0"
+	end
+	if(count==4001)
+		count = 0;
 end
 
 
@@ -103,28 +140,28 @@ char_line16= 192'h0f00000e00070018000e0000,
 char_line17= 192'h0f80000e00070018000e0000,
 char_line18= 192'h07c0000e000f0018000e0000,
 char_line19= 192'h07e0000e000e0018000e0000,
-char_line20= 192'h03f0db0e001e0018000e0000,
-char_line21= 192'h0000fc0e001c0018000e0000,
-char_line22= 192'h00007e0e00780018000e0000,
-char_line23= 192'h00003f0e01f00018000e0000,
-char_line24= 192'h80000f0fffc00018000e0000,
-char_line25= 192'hc000070e78000018000e0000,
-char_line26= 192'he000010e00000018000e0000,
-char_line27= 192'hf000000e00000018000e0000,
-char_line28= 192'hf800000e00000018000e0000,
-char_line29= 192'h7800000e00000018000e0000,
-char_line30= 192'h3c00000e00000018000e0000,
-char_line31= 192'h3c20000e00000018000e0000,
-char_line32= 192'h1c30000e00000018000e0000,
-char_line33= 192'h1c30000e00000018000e0000,
-char_line34= 192'h1c18000e00000018000e0000,
-char_line35= 192'h1c18000e00000018000e0000,
-char_line36= 192'h1c1c000e00000018000e0000,
-char_line37= 192'h381e000f0000003c000e0006,
-char_line38= 192'h381f000f0000003c000e000e,
-char_line39= 192'h701f813fc00001ff801e003e,
-char_line40= 192'he0187ffff00007ffe03ffffc,
-char_line41= 192'h800000000000000000000000,
+char_line20= 192'h00FC000e001e0018000e0000,
+char_line21= 192'h003F800e001c0018000e0000,
+char_line22= 192'h000FC00e00780018000e0000,
+char_line23= 192'h0007E00e01f00018000e0000,
+char_line24= 192'h0001F00fffc00018000e0000,
+char_line25= 192'h0000F80e78000018000e0000,
+char_line26= 192'h0000780e00000018000e0000,
+char_line27= 192'h00003C0e00000018000e0000,
+char_line28= 192'h00003C0e00000018000e0000,
+char_line29= 192'h20001C0e00000018000e0000,
+char_line30= 192'h30001C0e00000018000e0000,
+char_line31= 192'h30001C0e00000018000e0000,
+char_line32= 192'h18001C0e00000018000e0000,
+char_line33= 192'h18001C0e00000018000e0000,
+char_line34= 192'h1C00380e00000018000e0000,
+char_line35= 192'h1E00380e00000018000e0000,
+char_line36= 192'h1F00700e00000018000e0000,
+char_line37= 192'h1F81E00f0000003c000e0006,
+char_line38= 192'h187F800f0000003c000e000e,
+char_line39= 192'h0000003fc00001ff801e003e,
+char_line40= 192'h000000fff00007ffe03ffffc,
+char_line41= 192'h000000000000000000000000,
 char_line42= 192'h000000000000000000000000,
 char_line43= 192'h000000000000000000000000,
 char_line44= 192'h000000000000000000000000,
@@ -136,14 +173,14 @@ reg[7:0] char_bit;
 
 always @(posedge clk_25m)
 	
-	if(x_cnt == 10'd442) char_bit <= 9'd192;
-	else if(x_cnt > 10'd442 && x_cnt < 10'd634) char_bit <= char_bit-1'b1;	
+	if(x_cnt == 10'd442) char_bit <= 9'd96;
+	else if(x_cnt > 10'd442 && x_cnt < 10'd540) char_bit <= char_bit-1'b1;	
 	
 reg[7:0] vga_rgb;	
 
 always @ (posedge clk_25m)
 	if(!valid) vga_rgb <= 8'd0;
-	else if(x_cnt > 10'd442 && x_cnt < 10'd634) begin
+	else if(x_cnt > 10'd442 && x_cnt < 10'd540) begin
 		case(y_dis)
 			10'd231: if(char_line0[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ
@@ -161,17 +198,17 @@ always @ (posedge clk_25m)
 					 else vga_rgb <= 8'b111_11111;	//��ɫ
 			10'd238: if(char_line7[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ
-			10'd239: if(char_line8[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
+			10'd239: if(char_line8[char_bit]) vga_rgb <= 8'b111_111_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ
-			10'd240: if(char_line9[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
+			10'd240: if(char_line9[char_bit]) vga_rgb <= 8'b111_111_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ
 			10'd241: if(char_line10[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ		 		 		 		 		 
 			10'd242: if(char_line11[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ			 
-			10'd243: if(char_line12[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
+			10'd243: if(char_line12[char_bit]) vga_rgb <= 8'b111_111_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ	
-			10'd244: if(char_line13[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
+			10'd244: if(char_line13[char_bit]) vga_rgb <= 8'b111_111_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ	
 			10'd245: if(char_line14[char_bit]) vga_rgb <= 8'b011_000_11;	//��ɫ
 					 else vga_rgb <= 8'b111_11111;	//��ɫ	
@@ -179,53 +216,53 @@ always @ (posedge clk_25m)
 					 else vga_rgb <= 8'b111_11111;	//��ɫ			 		 
 
 
-			10'd247: if(char_line16[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd247: if(char_line16[char_bit]) vga_rgb <= 8'b111_111_11;	
 					 else vga_rgb <= 8'b111_11111;	
-			10'd248: if(char_line17[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd248: if(char_line17[char_bit]) vga_rgb <= 8'b111_111_11;	
 					 else vga_rgb <= 8'b111_11111;	
 
 			10'd249: if(char_line18[char_bit]) vga_rgb <= 8'b011_000_11;	
 					else vga_rgb <= 8'b111_11111;	
 			10'd250: if(char_line19[char_bit]) vga_rgb <= 8'b011_000_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd251: if(char_line20[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd251: if(char_line20[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd252: if(char_line21[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd252: if(char_line21[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd253: if(char_line22[char_bit]) vga_rgb <= 8'b011_000_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd254: if(char_line23[char_bit]) vga_rgb <= 8'b011_000_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd255: if(char_line24[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd255: if(char_line24[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd256: if(char_line25[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd256: if(char_line25[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd257: if(char_line26[char_bit]) vga_rgb <= 8'b011_000_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd258: if(char_line27[char_bit]) vga_rgb <= 8'b011_000_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd259: if(char_line28[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd259: if(char_line28[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd260: if(char_line29[char_bit]) vga_rgb <= 8'b011_000_11;	
+			10'd260: if(char_line29[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd261: if(char_line30[char_bit]) vga_rgb <= 8'b011_000_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd262: if(char_line31[char_bit]) vga_rgb <= 8'b011_000_00;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd263: if(char_line32[char_bit]) vga_rgb <= 8'b011_000_00;	
+			10'd263: if(char_line32[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd264: if(char_line33[char_bit]) vga_rgb <= 8'b011_000_00;	
+			10'd264: if(char_line33[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd265: if(char_line34[char_bit]) vga_rgb <= 8'b011_000_00;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd266: if(char_line35[char_bit]) vga_rgb <= 8'b011_000_00;	
 							 else vga_rgb <= 8'b111_11111;	
-			10'd267: if(char_line36[char_bit]) vga_rgb <= 8'b011_000_00;	
+			10'd267: if(char_line36[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
 
 
 							 
-			10'd268: if(char_line37[char_bit]) vga_rgb <= 8'b011_000_00;	
+			10'd268: if(char_line37[char_bit]) vga_rgb <= 8'b111_111_11;	
 							 else vga_rgb <= 8'b111_11111;	
 			10'd269: if(char_line38[char_bit]) vga_rgb <= 8'b011_000_00;	
 							 else vga_rgb <= 8'b111_11111;	

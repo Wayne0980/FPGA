@@ -5,5 +5,17 @@ vsync <= vsync_r.DB_MAX_OUTPUT_PORT_TYPE
 vga_r <= vga_rgb[7].DB_MAX_OUTPUT_PORT_TYPE
 vga_g <= vga_rgb[4].DB_MAX_OUTPUT_PORT_TYPE
 vga_b <= vga_rgb[1].DB_MAX_OUTPUT_PORT_TYPE
+seg[0] <= seg[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= seg[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= seg[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= seg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= seg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[7] <= seg[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[0] <= dig[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[1] <= dig[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[2] <= dig[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[3] <= dig[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
