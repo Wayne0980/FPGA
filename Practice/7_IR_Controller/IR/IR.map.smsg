@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at IR.v(70): always construct contains both blocking and non-blocking assignments File: F:/Wayne/FPGA/Alter4.0/06_ExampleCode/01_FPGA_BOARD/13_redlight/IR/IR.v Line: 70

@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sat Nov 11 16:11:19 2017
+Quartus Prime Version : 16.1.1 Build 200 11/30/2016 SJ Standard Edition
+Revision Name : IR
+Top-level Entity Name : IR
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 220 / 6,272 ( 4 % )
+    Total combinational functions : 218 / 6,272 ( 3 % )
+    Dedicated logic registers : 113 / 6,272 ( 2 % )
+Total registers : 113
+Total pins : 15 / 92 ( 16 % )
+Total virtual pins : 0
+Total memory bits : 0 / 276,480 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )
