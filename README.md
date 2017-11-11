@@ -12,3 +12,5 @@ Practice/5-VGA          Show shapes in TV via VGA port(600*480)(EP4CE6E22C8) </b
 ![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/5-VGA/IMAG1375-20171102-225626172.jpg)</br>
 Practice/6_VGA_Char     Show text in TV via VGA port(600*480)(EP4CE6E22C8) </br>
 ![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/6_VGA_Char/IMAG1378.jpg)</br>
+Practice/7_IR_Controller  Detecting the IR signal and show on 7-seg Led(EP4CE6E22C8) </br>
+![image](https://github.com/Wayne0980/FPGA/blob/master/Practice/20171111_162821.gif)</br>
