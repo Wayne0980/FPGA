@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sun Nov 12 14:04:50 2017
+Quartus Prime Version : 16.1.1 Build 200 11/30/2016 SJ Standard Edition
+Revision Name : LM75A_test
+Top-level Entity Name : LM75A_test
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 532 / 6,272 ( 8 % )
+    Total combinational functions : 532 / 6,272 ( 8 % )
+    Dedicated logic registers : 83 / 6,272 ( 1 % )
+Total registers : 83
+Total pins : 16 / 92 ( 17 % )
+Total virtual pins : 0
+Total memory bits : 0 / 276,480 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

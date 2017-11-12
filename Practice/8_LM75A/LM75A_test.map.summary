@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Nov 12 14:04:42 2017
+Quartus Prime Version : 16.1.1 Build 200 11/30/2016 SJ Standard Edition
+Revision Name : LM75A_test
+Top-level Entity Name : LM75A_test
+Family : Cyclone IV E
+Total logic elements : 532
+    Total combinational functions : 532
+    Dedicated logic registers : 83
+Total registers : 83
+Total pins : 16
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
